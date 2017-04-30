@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Desenvolvimento um site bacana</title>
+<title>Testes de programação JavaScript</title>
 </head>
 <body>
-	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://rawgit.com/digitalBush/jquery.maskedinput/1.4.0/dist/jquery.maskedinput.js"></script>
+<script>
+var conta = 7890;
+var d1 = 0;
+var d2 = 0;
+var d3 = 0;
+var d4 = 0;
+
+d1 = (conta % 10000) / 1000;
+d2 = (conta % 1000) / 100;
+d3 = (conta % 100) / 10;
+d4 = conta % 10;
+
+conta = parseInt(conta);
+d1 = parseInt(d1);
+d2 = parseInt(d2);
+d3 = parseInt(d3);
+d4 = parseInt(d4);
+modulo11 = ((d1 * 4) + (d2 * 6) + (d3 * 8) + (d4 * 2)) % 11;
+modulo11 = parseInt(modulo11);
+document.write(d1 + " | " + d2 + " | " + d3 + " | " + d4 + " | " + modulo11);
+
+// máscara de cep rg, cpf etc
+function formatar(mascara, documento){
+    var i = documento.value.length;
+    var saida = mascara.substring(0,1);
+    var texto = mascara.substring(i)
+    if (texto.substring(0,1) != saida){
+        documento.value += texto.substring(0,1);
+    }
+}
+
+$.("#cep").mask("99999-999");
+
+</script>
+<br>
+Validação de formulario
+<label for="CPF">CPF</label>
+<input type="text" id="cpf" size="12" maxlength="14" OnKeyPress="formatar('###.###.###-##',this);"> <br>
+<input type="text" id="cep" size="4">
+<br>
+<h3 id="length">0</h3>
 </body>
 </html>
